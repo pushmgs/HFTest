@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0cmarket.proto\"3\n\x12MarketDataResponse\x12\x0e\n\x06ticker\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02\";\n\x11MarketDataRequest\x12\x0e\n\x06ticker\x18\x01 \x01(\t\x12\x16\n\x0estarting_value\x18\x02 \x01(\x02\x32N\n\rMarketService\x12=\n\x0eSendMarketData\x12\x12.MarketDataRequest\x1a\x13.MarketDataResponse\"\x00\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0cmarket.proto\"3\n\x12MarketDataResponse\x12\x0e\n\x06ticker\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02\"N\n\x11MarketDataRequest\x12\x0e\n\x06ticker\x18\x01 \x01(\t\x12\x16\n\x0estarting_value\x18\x02 \x01(\x02\x12\x11\n\tnum_tests\x18\x03 \x01(\x05\x32U\n\x10MarketSimulation\x12\x41\n\x12\x43reateMarketStream\x12\x12.MarketDataRequest\x1a\x13.MarketDataResponse\"\x00\x30\x01\x62\x06proto3'
 )
 
 
@@ -86,6 +86,13 @@ _MARKETDATAREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='num_tests', full_name='MarketDataRequest.num_tests', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -99,7 +106,7 @@ _MARKETDATAREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=69,
-  serialized_end=128,
+  serialized_end=147,
 )
 
 DESCRIPTOR.message_types_by_name['MarketDataResponse'] = _MARKETDATARESPONSE
@@ -122,19 +129,19 @@ _sym_db.RegisterMessage(MarketDataRequest)
 
 
 
-_MARKETSERVICE = _descriptor.ServiceDescriptor(
-  name='MarketService',
-  full_name='MarketService',
+_MARKETSIMULATION = _descriptor.ServiceDescriptor(
+  name='MarketSimulation',
+  full_name='MarketSimulation',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=130,
-  serialized_end=208,
+  serialized_start=149,
+  serialized_end=234,
   methods=[
   _descriptor.MethodDescriptor(
-    name='SendMarketData',
-    full_name='MarketService.SendMarketData',
+    name='CreateMarketStream',
+    full_name='MarketSimulation.CreateMarketStream',
     index=0,
     containing_service=None,
     input_type=_MARKETDATAREQUEST,
@@ -143,8 +150,8 @@ _MARKETSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_MARKETSERVICE)
+_sym_db.RegisterServiceDescriptor(_MARKETSIMULATION)
 
-DESCRIPTOR.services_by_name['MarketService'] = _MARKETSERVICE
+DESCRIPTOR.services_by_name['MarketSimulation'] = _MARKETSIMULATION
 
 # @@protoc_insertion_point(module_scope)

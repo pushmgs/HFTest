@@ -1,9 +1,9 @@
 syntax = "proto3";
 
 // Market service definition
-service MarketService {
+service MarketSimulation {
     // Sends generated market data back, whether historical or randomly generated data.
-    rpc SendMarketData (MarketDataRequest) returns (stream MarketDataResponse) {}
+    rpc CreateMarketStream (MarketDataRequest) returns (stream MarketDataResponse) {}
 }
 
 // The response message containing a ticker and the security's floating point value.
@@ -16,4 +16,5 @@ message MarketDataResponse {
 message MarketDataRequest {
     string ticker = 1;
     float starting_value = 2;
+    int32 num_tests = 3;
 }
