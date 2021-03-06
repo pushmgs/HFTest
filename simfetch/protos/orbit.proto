@@ -1,0 +1,15 @@
+syntax = "proto3";
+// 
+message OrbitStats {
+    uint64 instructions = 1;
+    // repeated CallStack call_stacks = 2;
+    float time = 2;
+    string reason = 3;
+}
+
+// message CallStack {}
+
+service OrbitAnalysis {
+    // This is for orbit sending it's instrumentation stats back over for analysis
+    // rpc SendFinalStats (OrbitStats) returns ...
+}
