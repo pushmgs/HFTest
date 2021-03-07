@@ -19,51 +19,30 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x16trade_simulation.proto\"]\n\tTradeData\x12\x0c\n\x04time\x18\x01 \x01(\x04\x12\x13\n\x0bsecurity_id\x18\x02 \x01(\r\x12\x0c\n\x04side\x18\x03 \x01(\r\x12\r\n\x05price\x18\x04 \x01(\x04\x12\x10\n\x08quantity\x18\x05 \x01(\r\"u\n\x15TradeArbitrageRequest\x12\x19\n\x05trade\x18\x01 \x01(\x0b\x32\n.TradeData\x12\x17\n\x0fnum_simulations\x18\x02 \x01(\r\x12\x15\n\rid_arbitrages\x18\x03 \x03(\r\x12\x11\n\tnum_dummy\x18\x04 \x01(\r\"c\n\x15TradeArbitraryRequest\x12\x19\n\x05trade\x18\x01 \x01(\x0b\x32\n.TradeData\x12\x17\n\x0fnum_simulations\x18\x02 \x01(\r\x12\x16\n\x0enum_securities\x18\x03 \x01(\r\"-\n\x16HistoricalTradeRequest\x12\x13\n\x0bsecurity_id\x18\x01 \x01(\r\"K\n\x17HistoricalTradeResponse\x12\x15\n\rhistory_found\x18\x01 \x01(\x08\x12\x19\n\x05trade\x18\x02 \x03(\x0b\x32\n.TradeData2\xe4\x01\n\x0fTradeSimulation\x12?\n\x15\x43reateArbitrageStream\x12\x16.TradeArbitrageRequest\x1a\n.TradeData\"\x00\x30\x01\x12?\n\x15\x43reateArbitraryStream\x12\x16.TradeArbitraryRequest\x1a\n.TradeData\"\x00\x30\x01\x12O\n\x16\x43reateHistoricalStream\x12\x17.HistoricalTradeRequest\x1a\x18.HistoricalTradeResponse\"\x00\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x16trade_simulation.proto\"2\n\x0cSecurityBase\x12\x13\n\x0bsecurity_id\x18\x01 \x01(\r\x12\r\n\x05price\x18\x02 \x01(\x04\"_\n\x0ePlaceTradeData\x12\x0c\n\x04time\x18\x01 \x01(\x04\x12\x1f\n\x08security\x18\x02 \x01(\x0b\x32\r.SecurityBase\x12\x0c\n\x04side\x18\x03 \x01(\r\x12\x10\n\x08quantity\x18\x04 \x01(\r\"S\n\x15TradeArbitrageRequest\x12!\n\nsecurities\x18\x01 \x03(\x0b\x32\r.SecurityBase\x12\x17\n\x0fnum_simulations\x18\x02 \x01(\r\"S\n\x15TradeArbitraryRequest\x12!\n\nsecurities\x18\x01 \x03(\x0b\x32\r.SecurityBase\x12\x17\n\x0fnum_simulations\x18\x02 \x01(\r\"-\n\x16HistoricalTradeRequest\x12\x13\n\x0bsecurity_id\x18\x01 \x01(\r\"\\\n\x17HistoricalTradeResponse\x12\x15\n\rhistory_found\x18\x01 \x01(\x08\x12\x1c\n\x05trade\x18\x02 \x03(\x0b\x32\r.SecurityBase\x12\x0c\n\x04time\x18\x03 \x01(\x04\x32\xea\x01\n\x0fTradeSimulation\x12\x42\n\x15\x43reateArbitrageStream\x12\x16.TradeArbitrageRequest\x1a\r.SecurityBase\"\x00\x30\x01\x12\x42\n\x15\x43reateArbitraryStream\x12\x16.TradeArbitraryRequest\x1a\r.SecurityBase\"\x00\x30\x01\x12O\n\x16\x43reateHistoricalStream\x12\x17.HistoricalTradeRequest\x1a\x18.HistoricalTradeResponse\"\x00\x30\x01\x62\x06proto3'
 )
 
 
 
 
-_TRADEDATA = _descriptor.Descriptor(
-  name='TradeData',
-  full_name='TradeData',
+_SECURITYBASE = _descriptor.Descriptor(
+  name='SecurityBase',
+  full_name='SecurityBase',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='time', full_name='TradeData.time', index=0,
-      number=1, type=4, cpp_type=4, label=1,
+      name='security_id', full_name='SecurityBase.security_id', index=0,
+      number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='security_id', full_name='TradeData.security_id', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='side', full_name='TradeData.side', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='price', full_name='TradeData.price', index=3,
-      number=4, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='quantity', full_name='TradeData.quantity', index=4,
-      number=5, type=13, cpp_type=3, label=1,
+      name='price', full_name='SecurityBase.price', index=1,
+      number=2, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -81,41 +60,41 @@ _TRADEDATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=26,
-  serialized_end=119,
+  serialized_end=76,
 )
 
 
-_TRADEARBITRAGEREQUEST = _descriptor.Descriptor(
-  name='TradeArbitrageRequest',
-  full_name='TradeArbitrageRequest',
+_PLACETRADEDATA = _descriptor.Descriptor(
+  name='PlaceTradeData',
+  full_name='PlaceTradeData',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='trade', full_name='TradeArbitrageRequest.trade', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='num_simulations', full_name='TradeArbitrageRequest.num_simulations', index=1,
-      number=2, type=13, cpp_type=3, label=1,
+      name='time', full_name='PlaceTradeData.time', index=0,
+      number=1, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='id_arbitrages', full_name='TradeArbitrageRequest.id_arbitrages', index=2,
-      number=3, type=13, cpp_type=3, label=3,
-      has_default_value=False, default_value=[],
+      name='security', full_name='PlaceTradeData.security', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='num_dummy', full_name='TradeArbitrageRequest.num_dummy', index=3,
+      name='side', full_name='PlaceTradeData.side', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='quantity', full_name='PlaceTradeData.quantity', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -133,36 +112,29 @@ _TRADEARBITRAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=121,
-  serialized_end=238,
+  serialized_start=78,
+  serialized_end=173,
 )
 
 
-_TRADEARBITRARYREQUEST = _descriptor.Descriptor(
-  name='TradeArbitraryRequest',
-  full_name='TradeArbitraryRequest',
+_TRADEARBITRAGEREQUEST = _descriptor.Descriptor(
+  name='TradeArbitrageRequest',
+  full_name='TradeArbitrageRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='trade', full_name='TradeArbitraryRequest.trade', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='securities', full_name='TradeArbitrageRequest.securities', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='num_simulations', full_name='TradeArbitraryRequest.num_simulations', index=1,
+      name='num_simulations', full_name='TradeArbitrageRequest.num_simulations', index=1,
       number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='num_securities', full_name='TradeArbitraryRequest.num_securities', index=2,
-      number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -179,8 +151,47 @@ _TRADEARBITRARYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=240,
-  serialized_end=339,
+  serialized_start=175,
+  serialized_end=258,
+)
+
+
+_TRADEARBITRARYREQUEST = _descriptor.Descriptor(
+  name='TradeArbitraryRequest',
+  full_name='TradeArbitraryRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='securities', full_name='TradeArbitraryRequest.securities', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='num_simulations', full_name='TradeArbitraryRequest.num_simulations', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=260,
+  serialized_end=343,
 )
 
 
@@ -211,8 +222,8 @@ _HISTORICALTRADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=341,
-  serialized_end=386,
+  serialized_start=345,
+  serialized_end=390,
 )
 
 
@@ -238,6 +249,13 @@ _HISTORICALTRADERESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time', full_name='HistoricalTradeResponse.time', index=2,
+      number=3, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -250,26 +268,35 @@ _HISTORICALTRADERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=388,
-  serialized_end=463,
+  serialized_start=392,
+  serialized_end=484,
 )
 
-_TRADEARBITRAGEREQUEST.fields_by_name['trade'].message_type = _TRADEDATA
-_TRADEARBITRARYREQUEST.fields_by_name['trade'].message_type = _TRADEDATA
-_HISTORICALTRADERESPONSE.fields_by_name['trade'].message_type = _TRADEDATA
-DESCRIPTOR.message_types_by_name['TradeData'] = _TRADEDATA
+_PLACETRADEDATA.fields_by_name['security'].message_type = _SECURITYBASE
+_TRADEARBITRAGEREQUEST.fields_by_name['securities'].message_type = _SECURITYBASE
+_TRADEARBITRARYREQUEST.fields_by_name['securities'].message_type = _SECURITYBASE
+_HISTORICALTRADERESPONSE.fields_by_name['trade'].message_type = _SECURITYBASE
+DESCRIPTOR.message_types_by_name['SecurityBase'] = _SECURITYBASE
+DESCRIPTOR.message_types_by_name['PlaceTradeData'] = _PLACETRADEDATA
 DESCRIPTOR.message_types_by_name['TradeArbitrageRequest'] = _TRADEARBITRAGEREQUEST
 DESCRIPTOR.message_types_by_name['TradeArbitraryRequest'] = _TRADEARBITRARYREQUEST
 DESCRIPTOR.message_types_by_name['HistoricalTradeRequest'] = _HISTORICALTRADEREQUEST
 DESCRIPTOR.message_types_by_name['HistoricalTradeResponse'] = _HISTORICALTRADERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-TradeData = _reflection.GeneratedProtocolMessageType('TradeData', (_message.Message,), {
-  'DESCRIPTOR' : _TRADEDATA,
+SecurityBase = _reflection.GeneratedProtocolMessageType('SecurityBase', (_message.Message,), {
+  'DESCRIPTOR' : _SECURITYBASE,
   '__module__' : 'trade_simulation_pb2'
-  # @@protoc_insertion_point(class_scope:TradeData)
+  # @@protoc_insertion_point(class_scope:SecurityBase)
   })
-_sym_db.RegisterMessage(TradeData)
+_sym_db.RegisterMessage(SecurityBase)
+
+PlaceTradeData = _reflection.GeneratedProtocolMessageType('PlaceTradeData', (_message.Message,), {
+  'DESCRIPTOR' : _PLACETRADEDATA,
+  '__module__' : 'trade_simulation_pb2'
+  # @@protoc_insertion_point(class_scope:PlaceTradeData)
+  })
+_sym_db.RegisterMessage(PlaceTradeData)
 
 TradeArbitrageRequest = _reflection.GeneratedProtocolMessageType('TradeArbitrageRequest', (_message.Message,), {
   'DESCRIPTOR' : _TRADEARBITRAGEREQUEST,
@@ -308,8 +335,8 @@ _TRADESIMULATION = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=466,
-  serialized_end=694,
+  serialized_start=487,
+  serialized_end=721,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateArbitrageStream',
@@ -317,7 +344,7 @@ _TRADESIMULATION = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_TRADEARBITRAGEREQUEST,
-    output_type=_TRADEDATA,
+    output_type=_SECURITYBASE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
@@ -327,7 +354,7 @@ _TRADESIMULATION = _descriptor.ServiceDescriptor(
     index=1,
     containing_service=None,
     input_type=_TRADEARBITRARYREQUEST,
-    output_type=_TRADEDATA,
+    output_type=_SECURITYBASE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

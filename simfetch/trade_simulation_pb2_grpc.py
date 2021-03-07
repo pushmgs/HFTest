@@ -18,12 +18,12 @@ class TradeSimulationStub(object):
         self.CreateArbitrageStream = channel.unary_stream(
                 '/TradeSimulation/CreateArbitrageStream',
                 request_serializer=trade__simulation__pb2.TradeArbitrageRequest.SerializeToString,
-                response_deserializer=trade__simulation__pb2.TradeData.FromString,
+                response_deserializer=trade__simulation__pb2.SecurityBase.FromString,
                 )
         self.CreateArbitraryStream = channel.unary_stream(
                 '/TradeSimulation/CreateArbitraryStream',
                 request_serializer=trade__simulation__pb2.TradeArbitraryRequest.SerializeToString,
-                response_deserializer=trade__simulation__pb2.TradeData.FromString,
+                response_deserializer=trade__simulation__pb2.SecurityBase.FromString,
                 )
         self.CreateHistoricalStream = channel.unary_stream(
                 '/TradeSimulation/CreateHistoricalStream',
@@ -63,12 +63,12 @@ def add_TradeSimulationServicer_to_server(servicer, server):
             'CreateArbitrageStream': grpc.unary_stream_rpc_method_handler(
                     servicer.CreateArbitrageStream,
                     request_deserializer=trade__simulation__pb2.TradeArbitrageRequest.FromString,
-                    response_serializer=trade__simulation__pb2.TradeData.SerializeToString,
+                    response_serializer=trade__simulation__pb2.SecurityBase.SerializeToString,
             ),
             'CreateArbitraryStream': grpc.unary_stream_rpc_method_handler(
                     servicer.CreateArbitraryStream,
                     request_deserializer=trade__simulation__pb2.TradeArbitraryRequest.FromString,
-                    response_serializer=trade__simulation__pb2.TradeData.SerializeToString,
+                    response_serializer=trade__simulation__pb2.SecurityBase.SerializeToString,
             ),
             'CreateHistoricalStream': grpc.unary_stream_rpc_method_handler(
                     servicer.CreateHistoricalStream,
@@ -99,7 +99,7 @@ class TradeSimulation(object):
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/TradeSimulation/CreateArbitrageStream',
             trade__simulation__pb2.TradeArbitrageRequest.SerializeToString,
-            trade__simulation__pb2.TradeData.FromString,
+            trade__simulation__pb2.SecurityBase.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -116,7 +116,7 @@ class TradeSimulation(object):
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/TradeSimulation/CreateArbitraryStream',
             trade__simulation__pb2.TradeArbitraryRequest.SerializeToString,
-            trade__simulation__pb2.TradeData.FromString,
+            trade__simulation__pb2.SecurityBase.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
