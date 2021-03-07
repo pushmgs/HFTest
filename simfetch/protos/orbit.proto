@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-// Stats we're sending over from orbit, but this is going to change a lot. 
+// Stats we're sending over from Orbit, but this is going to change a lot. 
 message OrbitStats {
     uint64 instructions = 1;
     // repeated CallStack call_stacks = 2;
@@ -11,6 +11,6 @@ message OrbitStats {
 // message CallStack {}
 
 service OrbitAnalysis {
-    // This is for orbit sending it's instrumentation stats back over for analysis
+    // This is for Orbit sending it's instrumentation stats back over for analysis
     // rpc SendFinalStats (OrbitStats) returns ...
 }
