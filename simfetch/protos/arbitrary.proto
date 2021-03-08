@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "base.proto";
+
+// Request to create arbitrary trade data which takes in trade data to respond with a more logical structure
+message SecurityArbitraryRequest {
+    uint32 num_simulations = 1;
+}
+
+// Request to create arbitrary trade data which takes in trade data to respond with a more logical structure
+message CurrencyArbitraryRequest {
+    uint32 num_simulations = 1;
+}
+
+// Arbitrary service definition
+service ArbitraryService {
+    // Creates random trade data to be sent back
+    rpc StreamSecurityArbitrary (SecurityArbitraryRequest) returns (stream SecurityBase) {}
+
+    // Creates random trade data for currencies to be sent back to Orbit
+    rpc StreamCurrencyArbitrary (CurrencyArbitraryRequest) returns (stream CurrencyBase) {}
+}

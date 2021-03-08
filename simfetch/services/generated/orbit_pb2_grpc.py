@@ -5,7 +5,9 @@ import grpc
 
 
 class OrbitAnalysisStub(object):
-    """This is for orbit sending it's instrumentation stats back over for analysis
+    """message CallStack {}
+
+    This is for Orbit sending it's instrumentation stats back over for analysis
     rpc SendFinalStats (OrbitStats) returns ...
     """
 
@@ -18,7 +20,9 @@ class OrbitAnalysisStub(object):
 
 
 class OrbitAnalysisServicer(object):
-    """This is for orbit sending it's instrumentation stats back over for analysis
+    """message CallStack {}
+
+    This is for Orbit sending it's instrumentation stats back over for analysis
     rpc SendFinalStats (OrbitStats) returns ...
     """
 
@@ -33,6 +37,8 @@ def add_OrbitAnalysisServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class OrbitAnalysis(object):
-    """This is for orbit sending it's instrumentation stats back over for analysis
+    """message CallStack {}
+
+    This is for Orbit sending it's instrumentation stats back over for analysis
     rpc SendFinalStats (OrbitStats) returns ...
     """

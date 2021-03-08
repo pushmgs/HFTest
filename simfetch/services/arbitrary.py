@@ -1,6 +1,7 @@
 # Random security generation functions
 
 from trading_pb2 import CurrencyArbitraryRequest, CurrencyBase
+import math
 import random
 
 def truncate(number: float, digits: int) -> float:
@@ -16,10 +17,13 @@ def generate_arbitrary_currency_stream(request: CurrencyArbitraryRequest) -> Cur
     # Add (or subtract) that value to each currency
     for i in range(num_simulations):
         for currency in currencies:
+            rand_key = random.choice(list(currency.sells_for))
+            price = currency.sells_for[rand_key]
             a = random.randint(1, 9)
             negative_flag = bool(random.getrandbits(1))
             if negative_flag is False:
-                currency.price = truncate(currency.price + (a * 0.0000000001), 10)
+                price = truncate(price + (a * 0.1), 10)
             else:
-                currency.price = truncate(currency.price - (a * 0.0000000001), 10)
+                price = truncate(price - (a * 0.1), 10)
+            currency.sells_for[rand_key] = price
             yield currency

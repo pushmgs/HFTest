@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+// Minimal trade data to start a stream
+message SecurityBase {
+    uint32 security_id = 1;
+    double price = 2;
+}
+
+// Minimal currency info
+message CurrencyBase {
+    string name = 1;
+    string bank = 2;
+    double quoted = 3; 
+}

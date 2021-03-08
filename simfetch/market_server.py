@@ -11,17 +11,6 @@ import trading_pb2
 import trading_pb2_grpc
 from arbitrary import generate_arbitrary_currency_stream
 
-class TradeSimulationServicer(trading_pb2_grpc.TradeSimulationServicer):
-    """Trade streaming service implementation"""
-
-    def __init__(self):
-        pass
-
-    # Stream arbitrary small fluctuations... add big soon
-    def StreamCurrencyArbitrary(self, request, context):
-        for value in generate_arbitrary_currency_stream(request):
-            yield value
-
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers = 10))
     trading_pb2_grpc.add_TradeSimulationServicer_to_server(

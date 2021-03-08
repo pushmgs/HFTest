@@ -1,64 +1,6 @@
 syntax = "proto3";
 
-// Minimal trade data to start a stream
-message SecurityBase {
-    uint32 security_id = 1;
-    double price = 2;
-}
-
-// Minimal currency info
-message CurrencyBase {
-    string name = 1;
-    double price = 2;
-}
-
-// Request containing a ticker and the security's starting floating point value.
-message SecurityArbitrageRequest {
-    repeated SecurityBase securities = 1;
-    uint32 num_simulations = 2;
-    uint32 num_arbitrages = 3;
-}
-
-// Request containing a ticker and the security's starting floating point value.
-message CurrencyArbitrageRequest {
-    repeated CurrencyBase currencies = 1;
-    uint32 num_simulations = 2;
-    uint32 num_arbitrages = 3;
-}
-
-// Request to create arbitrary trade data which takes in trade data to respond with a more logical structure
-message SecurityArbitraryRequest {
-    repeated SecurityBase securities = 1;
-    uint32 num_simulations = 2;
-}
-
-// Request to create arbitrary trade data which takes in trade data to respond with a more logical structure
-message CurrencyArbitraryRequest {
-    repeated CurrencyBase currencies = 1;
-    uint32 num_simulations = 2;
-}
-
-// Request to fetch historical trade data.
-message SecurityHistoricalRequest {
-    uint32 security_id = 1;
-}
-
-message CurrencyHistoricalRequest {
-    string name = 1;
-}
-
-// Response to a historical trade request. If no history was found for a particular security, random data generated.
-message SecurityHistoricalResponse {
-    bool history_found = 1;
-    float price = 2;
-    uint64 time = 3;
-}
-
-// Response to a historical currency request.
-message CurrencyHistoricalResponse {
-    float price = 1; 
-    uint64 time = 2; // Change to string?
-}
+import "base.proto";
 
 // Response trade structure which is subject to change, and anyone who wants to change this can.
 message PlaceTradeData {
@@ -66,25 +8,4 @@ message PlaceTradeData {
     SecurityBase security = 2;
     uint32 side = 3;
     uint32 quantity = 4;
-}
-
-// Market service definition
-service TradeSimulation {
-    // Sends security arbitrage data back in a one way stream
-    rpc StreamSecurityArbitrage (SecurityArbitrageRequest) returns (stream SecurityBase) {}
-
-    // Streams currency arbitrage data back one way
-    rpc StreamCurrencyArbitrage (CurrencyArbitrageRequest) returns (stream CurrencyBase) {}
-
-    // Creates random trade data to be sent back
-    rpc StreamSecurityArbitrary (SecurityArbitraryRequest) returns (stream SecurityBase) {}
-
-    // Creates random trade data for currencies to be sent back to Orbit
-    rpc StreamCurrencyArbitrary (CurrencyArbitraryRequest) returns (stream CurrencyBase) {}
-
-    // Streams historical trade data for a particular security
-    rpc StreamSecurityHistory (SecurityHistoricalRequest) returns (stream SecurityHistoricalResponse) {}
-
-    // Streams historical currency data back
-    rpc StreamCurrencyHistory (CurrencyHistoricalRequest) returns (stream CurrencyHistoricalResponse) {}
 }

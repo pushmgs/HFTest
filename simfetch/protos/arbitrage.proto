@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "base.proto";
+
+// Request containing a ticker and the security's starting floating point value.
+message CurrencyArbitrageRequest {
+    uint32 num_arbitrages = 1;
+}
+
+// Arbitrage service definition
+service ArbitrageService {
+    // Streams quoted prices back that has a hidden arbitrage to detect
+    rpc StreamCurrencyArbitrage (CurrencyArbitrageRequest) returns (stream CurrencyBase) {}
+}

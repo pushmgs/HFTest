@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+// Request to fetch historical trade data.
+message SecurityHistoricalRequest {
+    uint32 security_id = 1;
+}
+
+message CurrencyHistoricalRequest {
+    string name = 1;
+    string bank = 2;
+}
+
+// Response to the request of an instrument's history
+message InstrumentHistoricalResponse {
+    double price = 1; // Send 0 if null?
+    string time = 2;
+}
+
+// Historical service definition
+service HistoricalService {
+     // Streams historical data for a particular security
+     rpc StreamSecurityHistory (SecurityHistoricalRequest) returns (stream InstrumentHistoricalResponse) {}
+
+     // Streams historical currency data back
+     rpc StreamCurrencyHistory (CurrencyHistoricalRequest) returns (stream InstrumentHistoricalResponse) {}
+}
