@@ -11,7 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import base_pb2 as base__pb2
+import generated.base_pb2 as base__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0f\x61rbitrary.proto\x1a\nbase.proto\"3\n\x18SecurityArbitraryRequest\x12\x17\n\x0fnum_simulations\x18\x01 \x01(\r\"3\n\x18\x43urrencyArbitraryRequest\x12\x17\n\x0fnum_simulations\x18\x01 \x01(\r2\xa4\x01\n\x10\x41rbitraryService\x12G\n\x17StreamSecurityArbitrary\x12\x19.SecurityArbitraryRequest\x1a\r.SecurityBase\"\x00\x30\x01\x12G\n\x17StreamCurrencyArbitrary\x12\x19.CurrencyArbitraryRequest\x1a\r.CurrencyBase\"\x00\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0f\x61rbitrary.proto\x1a\nbase.proto\"3\n\x18SecurityArbitraryRequest\x12\x17\n\x0fnum_simulations\x18\x01 \x01(\r\"3\n\x18\x43urrencyArbitraryRequest\x12\x17\n\x0fnum_simulations\x18\x01 \x01(\r2\xa7\x01\n\x13\x41rbitrarySimulation\x12G\n\x17StreamSecurityArbitrary\x12\x19.SecurityArbitraryRequest\x1a\r.SecurityBase\"\x00\x30\x01\x12G\n\x17StreamCurrencyArbitrary\x12\x19.CurrencyArbitraryRequest\x1a\r.CurrencyBase\"\x00\x30\x01\x62\x06proto3'
   ,
   dependencies=[base__pb2.DESCRIPTOR,])
 
@@ -110,19 +110,19 @@ _sym_db.RegisterMessage(CurrencyArbitraryRequest)
 
 
 
-_ARBITRARYSERVICE = _descriptor.ServiceDescriptor(
-  name='ArbitraryService',
-  full_name='ArbitraryService',
+_ARBITRARYSIMULATION = _descriptor.ServiceDescriptor(
+  name='ArbitrarySimulation',
+  full_name='ArbitrarySimulation',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=138,
-  serialized_end=302,
+  serialized_end=305,
   methods=[
   _descriptor.MethodDescriptor(
     name='StreamSecurityArbitrary',
-    full_name='ArbitraryService.StreamSecurityArbitrary',
+    full_name='ArbitrarySimulation.StreamSecurityArbitrary',
     index=0,
     containing_service=None,
     input_type=_SECURITYARBITRARYREQUEST,
@@ -132,7 +132,7 @@ _ARBITRARYSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='StreamCurrencyArbitrary',
-    full_name='ArbitraryService.StreamCurrencyArbitrary',
+    full_name='ArbitrarySimulation.StreamCurrencyArbitrary',
     index=1,
     containing_service=None,
     input_type=_CURRENCYARBITRARYREQUEST,
@@ -141,8 +141,8 @@ _ARBITRARYSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_ARBITRARYSERVICE)
+_sym_db.RegisterServiceDescriptor(_ARBITRARYSIMULATION)
 
-DESCRIPTOR.services_by_name['ArbitraryService'] = _ARBITRARYSERVICE
+DESCRIPTOR.services_by_name['ArbitrarySimulation'] = _ARBITRARYSIMULATION
 
 # @@protoc_insertion_point(module_scope)

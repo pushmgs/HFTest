@@ -5,7 +5,7 @@ import grpc
 import historical_pb2 as historical__pb2
 
 
-class HistoricalServiceStub(object):
+class HistoricalSimulationStub(object):
     """Historical service definition
     """
 
@@ -16,18 +16,18 @@ class HistoricalServiceStub(object):
             channel: A grpc.Channel.
         """
         self.StreamSecurityHistory = channel.unary_stream(
-                '/HistoricalService/StreamSecurityHistory',
+                '/HistoricalSimulation/StreamSecurityHistory',
                 request_serializer=historical__pb2.SecurityHistoricalRequest.SerializeToString,
                 response_deserializer=historical__pb2.InstrumentHistoricalResponse.FromString,
                 )
         self.StreamCurrencyHistory = channel.unary_stream(
-                '/HistoricalService/StreamCurrencyHistory',
+                '/HistoricalSimulation/StreamCurrencyHistory',
                 request_serializer=historical__pb2.CurrencyHistoricalRequest.SerializeToString,
                 response_deserializer=historical__pb2.InstrumentHistoricalResponse.FromString,
                 )
 
 
-class HistoricalServiceServicer(object):
+class HistoricalSimulationServicer(object):
     """Historical service definition
     """
 
@@ -46,7 +46,7 @@ class HistoricalServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_HistoricalServiceServicer_to_server(servicer, server):
+def add_HistoricalSimulationServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'StreamSecurityHistory': grpc.unary_stream_rpc_method_handler(
                     servicer.StreamSecurityHistory,
@@ -60,12 +60,12 @@ def add_HistoricalServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'HistoricalService', rpc_method_handlers)
+            'HistoricalSimulation', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class HistoricalService(object):
+class HistoricalSimulation(object):
     """Historical service definition
     """
 
@@ -80,7 +80,7 @@ class HistoricalService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/HistoricalService/StreamSecurityHistory',
+        return grpc.experimental.unary_stream(request, target, '/HistoricalSimulation/StreamSecurityHistory',
             historical__pb2.SecurityHistoricalRequest.SerializeToString,
             historical__pb2.InstrumentHistoricalResponse.FromString,
             options, channel_credentials,
@@ -97,7 +97,7 @@ class HistoricalService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/HistoricalService/StreamCurrencyHistory',
+        return grpc.experimental.unary_stream(request, target, '/HistoricalSimulation/StreamCurrencyHistory',
             historical__pb2.CurrencyHistoricalRequest.SerializeToString,
             historical__pb2.InstrumentHistoricalResponse.FromString,
             options, channel_credentials,

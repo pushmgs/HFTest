@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10historical.proto\"0\n\x19SecurityHistoricalRequest\x12\x13\n\x0bsecurity_id\x18\x01 \x01(\r\"7\n\x19\x43urrencyHistoricalRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x62\x61nk\x18\x02 \x01(\t\";\n\x1cInstrumentHistoricalResponse\x12\r\n\x05price\x18\x01 \x01(\x01\x12\x0c\n\x04time\x18\x02 \x01(\t2\xc3\x01\n\x11HistoricalService\x12V\n\x15StreamSecurityHistory\x12\x1a.SecurityHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x12V\n\x15StreamCurrencyHistory\x12\x1a.CurrencyHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x10historical.proto\"0\n\x19SecurityHistoricalRequest\x12\x13\n\x0bsecurity_id\x18\x01 \x01(\r\"7\n\x19\x43urrencyHistoricalRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x62\x61nk\x18\x02 \x01(\t\";\n\x1cInstrumentHistoricalResponse\x12\r\n\x05price\x18\x01 \x01(\x01\x12\x0c\n\x04time\x18\x02 \x01(\t2\xc6\x01\n\x14HistoricalSimulation\x12V\n\x15StreamSecurityHistory\x12\x1a.SecurityHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x12V\n\x15StreamCurrencyHistory\x12\x1a.CurrencyHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x62\x06proto3'
 )
 
 
@@ -162,19 +162,19 @@ _sym_db.RegisterMessage(InstrumentHistoricalResponse)
 
 
 
-_HISTORICALSERVICE = _descriptor.ServiceDescriptor(
-  name='HistoricalService',
-  full_name='HistoricalService',
+_HISTORICALSIMULATION = _descriptor.ServiceDescriptor(
+  name='HistoricalSimulation',
+  full_name='HistoricalSimulation',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=189,
-  serialized_end=384,
+  serialized_end=387,
   methods=[
   _descriptor.MethodDescriptor(
     name='StreamSecurityHistory',
-    full_name='HistoricalService.StreamSecurityHistory',
+    full_name='HistoricalSimulation.StreamSecurityHistory',
     index=0,
     containing_service=None,
     input_type=_SECURITYHISTORICALREQUEST,
@@ -184,7 +184,7 @@ _HISTORICALSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='StreamCurrencyHistory',
-    full_name='HistoricalService.StreamCurrencyHistory',
+    full_name='HistoricalSimulation.StreamCurrencyHistory',
     index=1,
     containing_service=None,
     input_type=_CURRENCYHISTORICALREQUEST,
@@ -193,8 +193,8 @@ _HISTORICALSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_HISTORICALSERVICE)
+_sym_db.RegisterServiceDescriptor(_HISTORICALSIMULATION)
 
-DESCRIPTOR.services_by_name['HistoricalService'] = _HISTORICALSERVICE
+DESCRIPTOR.services_by_name['HistoricalSimulation'] = _HISTORICALSIMULATION
 
 # @@protoc_insertion_point(module_scope)

@@ -2,11 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import arbitrage_pb2 as arbitrage__pb2
-import base_pb2 as base__pb2
+import generated.arbitrage_pb2 as arbitrage__pb2
 
 
-class ArbitrageServiceStub(object):
+class ArbitrageSimulationStub(object):
     """Arbitrage service definition
     """
 
@@ -17,13 +16,18 @@ class ArbitrageServiceStub(object):
             channel: A grpc.Channel.
         """
         self.StreamCurrencyArbitrage = channel.unary_stream(
-                '/ArbitrageService/StreamCurrencyArbitrage',
+                '/ArbitrageSimulation/StreamCurrencyArbitrage',
                 request_serializer=arbitrage__pb2.CurrencyArbitrageRequest.SerializeToString,
-                response_deserializer=base__pb2.CurrencyBase.FromString,
+                response_deserializer=arbitrage__pb2.RatesResponse.FromString,
+                )
+        self.FetchRatesFromCache = channel.stream_stream(
+                '/ArbitrageSimulation/FetchRatesFromCache',
+                request_serializer=arbitrage__pb2.FetchRatesRequest.SerializeToString,
+                response_deserializer=arbitrage__pb2.RatesResponse.FromString,
                 )
 
 
-class ArbitrageServiceServicer(object):
+class ArbitrageSimulationServicer(object):
     """Arbitrage service definition
     """
 
@@ -34,22 +38,34 @@ class ArbitrageServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def FetchRatesFromCache(self, request_iterator, context):
+        """Bi-directional streaming
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-def add_ArbitrageServiceServicer_to_server(servicer, server):
+
+def add_ArbitrageSimulationServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'StreamCurrencyArbitrage': grpc.unary_stream_rpc_method_handler(
                     servicer.StreamCurrencyArbitrage,
                     request_deserializer=arbitrage__pb2.CurrencyArbitrageRequest.FromString,
-                    response_serializer=base__pb2.CurrencyBase.SerializeToString,
+                    response_serializer=arbitrage__pb2.RatesResponse.SerializeToString,
+            ),
+            'FetchRatesFromCache': grpc.stream_stream_rpc_method_handler(
+                    servicer.FetchRatesFromCache,
+                    request_deserializer=arbitrage__pb2.FetchRatesRequest.FromString,
+                    response_serializer=arbitrage__pb2.RatesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'ArbitrageService', rpc_method_handlers)
+            'ArbitrageSimulation', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class ArbitrageService(object):
+class ArbitrageSimulation(object):
     """Arbitrage service definition
     """
 
@@ -64,8 +80,25 @@ class ArbitrageService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/ArbitrageService/StreamCurrencyArbitrage',
+        return grpc.experimental.unary_stream(request, target, '/ArbitrageSimulation/StreamCurrencyArbitrage',
             arbitrage__pb2.CurrencyArbitrageRequest.SerializeToString,
-            base__pb2.CurrencyBase.FromString,
+            arbitrage__pb2.RatesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FetchRatesFromCache(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/ArbitrageSimulation/FetchRatesFromCache',
+            arbitrage__pb2.FetchRatesRequest.SerializeToString,
+            arbitrage__pb2.RatesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

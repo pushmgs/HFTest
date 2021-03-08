@@ -2,11 +2,11 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import arbitrary_pb2 as arbitrary__pb2
-import base_pb2 as base__pb2
+import generated.arbitrary_pb2 as arbitrary__pb2
+import generated.base_pb2 as base__pb2
 
 
-class ArbitraryServiceStub(object):
+class ArbitrarySimulationStub(object):
     """Arbitrary service definition
     """
 
@@ -17,18 +17,18 @@ class ArbitraryServiceStub(object):
             channel: A grpc.Channel.
         """
         self.StreamSecurityArbitrary = channel.unary_stream(
-                '/ArbitraryService/StreamSecurityArbitrary',
+                '/ArbitrarySimulation/StreamSecurityArbitrary',
                 request_serializer=arbitrary__pb2.SecurityArbitraryRequest.SerializeToString,
                 response_deserializer=base__pb2.SecurityBase.FromString,
                 )
         self.StreamCurrencyArbitrary = channel.unary_stream(
-                '/ArbitraryService/StreamCurrencyArbitrary',
+                '/ArbitrarySimulation/StreamCurrencyArbitrary',
                 request_serializer=arbitrary__pb2.CurrencyArbitraryRequest.SerializeToString,
                 response_deserializer=base__pb2.CurrencyBase.FromString,
                 )
 
 
-class ArbitraryServiceServicer(object):
+class ArbitrarySimulationServicer(object):
     """Arbitrary service definition
     """
 
@@ -47,7 +47,7 @@ class ArbitraryServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_ArbitraryServiceServicer_to_server(servicer, server):
+def add_ArbitrarySimulationServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'StreamSecurityArbitrary': grpc.unary_stream_rpc_method_handler(
                     servicer.StreamSecurityArbitrary,
@@ -61,12 +61,12 @@ def add_ArbitraryServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'ArbitraryService', rpc_method_handlers)
+            'ArbitrarySimulation', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class ArbitraryService(object):
+class ArbitrarySimulation(object):
     """Arbitrary service definition
     """
 
@@ -81,7 +81,7 @@ class ArbitraryService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/ArbitraryService/StreamSecurityArbitrary',
+        return grpc.experimental.unary_stream(request, target, '/ArbitrarySimulation/StreamSecurityArbitrary',
             arbitrary__pb2.SecurityArbitraryRequest.SerializeToString,
             base__pb2.SecurityBase.FromString,
             options, channel_credentials,
@@ -98,7 +98,7 @@ class ArbitraryService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/ArbitraryService/StreamCurrencyArbitrary',
+        return grpc.experimental.unary_stream(request, target, '/ArbitrarySimulation/StreamCurrencyArbitrary',
             arbitrary__pb2.CurrencyArbitraryRequest.SerializeToString,
             base__pb2.CurrencyBase.FromString,
             options, channel_credentials,

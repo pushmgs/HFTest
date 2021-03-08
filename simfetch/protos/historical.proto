@@ -17,7 +17,7 @@ message InstrumentHistoricalResponse {
 }
 
 // Historical service definition
-service HistoricalService {
+service HistoricalSimulation {
      // Streams historical data for a particular security
      rpc StreamSecurityHistory (SecurityHistoricalRequest) returns (stream InstrumentHistoricalResponse) {}
 
