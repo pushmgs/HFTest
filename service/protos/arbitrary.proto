@@ -5,6 +5,7 @@ import "base.proto";
 // Request to create arbitrary trade data which takes in trade data to respond with a more logical structure
 message SecurityArbitraryRequest {
     uint32 num_simulations = 1;
+    uint32 security_id = 2;
 }
 
 // Request to create arbitrary trade data which takes in trade data to respond with a more logical structure

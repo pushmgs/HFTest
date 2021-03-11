@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10historical.proto\"0\n\x19SecurityHistoricalRequest\x12\x13\n\x0bsecurity_id\x18\x01 \x01(\r\"7\n\x19\x43urrencyHistoricalRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x62\x61nk\x18\x02 \x01(\t\";\n\x1cInstrumentHistoricalResponse\x12\r\n\x05price\x18\x01 \x01(\x01\x12\x0c\n\x04time\x18\x02 \x01(\t2\xc6\x01\n\x14HistoricalSimulation\x12V\n\x15StreamSecurityHistory\x12\x1a.SecurityHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x12V\n\x15StreamCurrencyHistory\x12\x1a.CurrencyHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x10historical.proto\"C\n\x19SecurityHistoricalRequest\x12\x11\n\tfile_path\x18\x01 \x01(\t\x12\x13\n\x0bsecurity_id\x18\x02 \x01(\r\"N\n\x19\x43urrencyHistoricalRequest\x12\x11\n\tfile_path\x18\x01 \x01(\t\x12\x10\n\x08\x65xchange\x18\x02 \x01(\t\x12\x0c\n\x04\x62\x61nk\x18\x03 \x01(\t\";\n\x1cInstrumentHistoricalResponse\x12\r\n\x05price\x18\x01 \x01(\x01\x12\x0c\n\x04time\x18\x02 \x01(\t2\xc6\x01\n\x14HistoricalSimulation\x12V\n\x15StreamSecurityHistory\x12\x1a.SecurityHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x12V\n\x15StreamCurrencyHistory\x12\x1a.CurrencyHistoricalRequest\x1a\x1d.InstrumentHistoricalResponse\"\x00\x30\x01\x62\x06proto3'
 )
 
 
@@ -34,8 +34,15 @@ _SECURITYHISTORICALREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='security_id', full_name='SecurityHistoricalRequest.security_id', index=0,
-      number=1, type=13, cpp_type=3, label=1,
+      name='file_path', full_name='SecurityHistoricalRequest.file_path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='security_id', full_name='SecurityHistoricalRequest.security_id', index=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -53,7 +60,7 @@ _SECURITYHISTORICALREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=20,
-  serialized_end=68,
+  serialized_end=87,
 )
 
 
@@ -66,15 +73,22 @@ _CURRENCYHISTORICALREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='CurrencyHistoricalRequest.name', index=0,
+      name='file_path', full_name='CurrencyHistoricalRequest.file_path', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bank', full_name='CurrencyHistoricalRequest.bank', index=1,
+      name='exchange', full_name='CurrencyHistoricalRequest.exchange', index=1,
       number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bank', full_name='CurrencyHistoricalRequest.bank', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -91,8 +105,8 @@ _CURRENCYHISTORICALREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=70,
-  serialized_end=125,
+  serialized_start=89,
+  serialized_end=167,
 )
 
 
@@ -130,8 +144,8 @@ _INSTRUMENTHISTORICALRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=127,
-  serialized_end=186,
+  serialized_start=169,
+  serialized_end=228,
 )
 
 DESCRIPTOR.message_types_by_name['SecurityHistoricalRequest'] = _SECURITYHISTORICALREQUEST
@@ -169,8 +183,8 @@ _HISTORICALSIMULATION = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=189,
-  serialized_end=387,
+  serialized_start=231,
+  serialized_end=429,
   methods=[
   _descriptor.MethodDescriptor(
     name='StreamSecurityHistory',

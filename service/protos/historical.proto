@@ -2,18 +2,20 @@ syntax = "proto3";
 
 // Request to fetch historical trade data.
 message SecurityHistoricalRequest {
-    uint32 security_id = 1;
+    string file_path = 1;
+    uint32 security_id = 2;
 }
 
 message CurrencyHistoricalRequest {
-    string name = 1;
-    string bank = 2;
+    string file_path = 1;
+    string exchange = 2;
+    string bank = 3;
 }
 
 // Response to the request of an instrument's history
 message InstrumentHistoricalResponse {
-    double price = 1; // Send 0 if null?
-    string time = 2;
+    double price = 1;
+    string time = 2; // Send "DNE" if null
 }
 
 // Historical service definition

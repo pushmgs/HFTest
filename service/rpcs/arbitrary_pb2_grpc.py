@@ -2,8 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import generated.arbitrary_pb2 as arbitrary__pb2
-import generated.base_pb2 as base__pb2
+import arbitrary_pb2 as arbitrary__pb2
+import base_pb2 as base__pb2
 
 
 class ArbitrarySimulationStub(object):
